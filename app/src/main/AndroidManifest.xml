@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".App.MainActivity" />
-        <activity android:name=".App.GraphicActivity">
+        <activity android:name=".App.GraphicActivity"/>
         <activity android:name=".App.AlertasActivity" />
         <activity android:name=".App.DatePickerActivitiy"></activity>
     </application>
