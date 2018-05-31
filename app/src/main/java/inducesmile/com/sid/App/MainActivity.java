@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+
     public void refreshDB(View v){
         EditText idCultura = findViewById(R.id.idCultura);
         if (idCultura.getText() != null){
@@ -61,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             updateNomeCultura();
             updateNumeroMedicoes();
             updateNumeroAlertas();
-
         }
     }
 
