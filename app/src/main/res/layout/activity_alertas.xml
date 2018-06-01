@@ -63,7 +63,8 @@
                             android:layout_height="wrap_content"
                             android:padding="20dp"
                             android:text="NomeVariavel"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="10sp"/>
 
                         <TextView
                             android:id="@+id/data"
@@ -71,7 +72,8 @@
                             android:layout_height="wrap_content"
                             android:padding="20dp"
                             android:text="Data"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="10sp"/>
 
                         <TextView
                             android:id="@+id/hora"
@@ -79,7 +81,8 @@
                             android:layout_height="wrap_content"
                             android:padding="20dp"
                             android:text="Hora"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="10sp"/>
 
                         <TextView
                             android:id="@+id/valor"
@@ -87,7 +90,8 @@
                             android:layout_height="wrap_content"
                             android:padding="20dp"
                             android:text="Valor"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="10sp"/>
 
                         <TextView
                             android:id="@+id/alerta"
@@ -95,7 +99,8 @@
                             android:layout_height="wrap_content"
                             android:padding="20dp"
                             android:text="Alerta"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="10sp"/>
 
                     </TableRow>
                 </TableLayout>
