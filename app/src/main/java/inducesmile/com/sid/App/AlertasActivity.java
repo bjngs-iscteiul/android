@@ -3,6 +3,7 @@ package inducesmile.com.sid.App;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -94,6 +95,10 @@ private int dpAsPixels(int dp){
     return (int) (dp*scale + 0.5f);
 
 }
+
+    public void refreshAlerts(View v){
+
+    }
 
 
 }
