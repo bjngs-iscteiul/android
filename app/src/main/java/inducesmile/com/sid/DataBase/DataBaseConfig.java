@@ -32,7 +32,13 @@ public class DataBaseConfig {
     public static class Cultura implements BaseColumns{
         public static final String TABLE_NAME="Cultura";
         public static final String COLUMN_NAME_IDCULTURA="IDCultura";
+        public static final String COLUMN_NAME_EMAIL="Email";
         public static final String COLUMN_NAME_NOMECULTURA="NomeCultura";
+        public static final String COLUMN_NAME_LIMITEINFERIORTEMPERATURA="limiteInferiorTemperatura";
+        public static final String COLUMN_NAME_LIMITESUPERIORTEMPERATURA="limiteSuperiorTemperatura";
+        public static final String COLUMN_NAME_LIMITEINFERIORHUMIDADE="limiteInferiorHumidade";
+        public static final String COLUMN_NAME_LIMITESUPERIORHUMIDADE="limiteSuperiorHumidade";
+
     }
 
 
@@ -58,7 +64,12 @@ public class DataBaseConfig {
     protected static final String SQL_CREATE_CULTURA=
             "CREATE TABLE " + Cultura.TABLE_NAME +
                     " (" + Cultura.COLUMN_NAME_IDCULTURA + " INTEGER PRIMARY KEY," +
-                    Cultura.COLUMN_NAME_NOMECULTURA + " TEXT )";
+                    Cultura.COLUMN_NAME_EMAIL + " TEXT," +
+                    Cultura.COLUMN_NAME_NOMECULTURA + " TEXT," +
+                    Cultura.COLUMN_NAME_LIMITEINFERIORHUMIDADE + " DOUBLE," +
+                    Cultura.COLUMN_NAME_LIMITESUPERIORHUMIDADE + " DOUBLE," +
+                    Cultura.COLUMN_NAME_LIMITEINFERIORTEMPERATURA + " DOUBLE," +
+                    Cultura.COLUMN_NAME_LIMITESUPERIORTEMPERATURA + " DOUBLE )";
 
     protected static final String SQL_DELETE_HUMIDADE_TEMPERATURA =
             "DROP TABLE IF EXISTS " + HumidadeTemperatura.TABLE_NAME;

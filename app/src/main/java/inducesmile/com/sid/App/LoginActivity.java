@@ -1,9 +1,12 @@
 package inducesmile.com.sid.App;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -13,11 +16,13 @@ import inducesmile.com.sid.R;
 public class LoginActivity extends AppCompatActivity {
     private EditText ip, port,username,password;
     private Button login;
+
+    //TODO Create AutoCompleteTextView in this method for all fields
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         ip = findViewById(R.id.ip);
         port = findViewById(R.id.port);
         username=findViewById(R.id.username);
@@ -26,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginClick(View v){
-
         new UserLogin(ip.getText().toString(), port.getText().toString(),username.getText().toString(),password.getText().toString());
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);

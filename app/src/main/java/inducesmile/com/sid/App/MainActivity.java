@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
     public void refreshDB(View v){
         EditText idCultura = findViewById(R.id.idCultura);
         if (idCultura.getText() != null){
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             updateNomeCultura();
             updateNumeroMedicoes();
             updateNumeroAlertas();
+
         }
     }
 
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView nomeCultura_tv= findViewById(R.id.nomeCultura_tv);
         Cursor cursor = dbReader.readCultura();
-        String nomeCultura=null;
+        String nomeCultura = null;
         while (cursor.moveToNext()){
             nomeCultura = cursor.getString(cursor.getColumnIndex("NomeCultura"));
         }
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             JSONArray jsonHumidadeTemperatura = jParser.getJSONFromUrl(READ_HUMIDADE_TEMPERATURA, params);
             db.dbClear();
             if (jsonHumidadeTemperatura !=null){
-            for (int i = 0; i < jsonHumidadeTemperatura.length(); i++) {
+            for (int i = 0; i < jsonHumidadeTemperatura.length()-1; i++) {
                 JSONObject c = jsonHumidadeTemperatura.getJSONObject(i);
                 int idMedicao = c.getInt("IDMedicao");
                 String horaMedicao = c.getString("HoraMedicao");
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
             JSONArray jsonAlertas = jParser.getJSONFromUrl(READ_ALERTAS,params);
             if (jsonAlertas!=null){
-                for (int i = 0; i < jsonAlertas.length(); i++) {
+                for (int i = 0; i < jsonAlertas.length()-1; i++) {
                     JSONObject c = jsonAlertas.getJSONObject(i);
                     int IDAlerta = c.getInt("IDAlerta");
                     String dataMedicao = c.getString("DataMedicao");
@@ -157,10 +157,29 @@ public class MainActivity extends AppCompatActivity {
 
             JSONArray jsonCultura = jParser.getJSONFromUrl(READ_Cultura,params);
             if (jsonCultura!=null){
-                for (int i = 0; i < jsonCultura.length(); i++) {
+                for (int i = 0; i < jsonCultura.length()-1; i++) {
                     JSONObject c = jsonCultura.getJSONObject(i);
-                    String nomeCultura = c.getString("NomeCultura");
-                    db.insert_Cultura(Integer.parseInt(idCultura),nomeCultura);
+                    Integer p_idCultura = c.getInt("idCultura");
+
+                    if (Integer.parseInt(idCultura )== p_idCultura) {
+
+                        String p_email = c.getString("email");
+                        String p_nomeCultura = c.getString("nomeCultura");
+                        Double limiteInferiorTemperatura = c.getDouble("limiteInferiorTemperatura");
+                        Double limiteSuperiorTemperatura = c.getDouble("limiteSuperiorTemperatura");
+                        Double limiteInferiorHumidade = c.getDouble("limiteInferiorHumidade");
+                        Double limiteSuperiorHumidade = c.getDouble("limiteSuperiorHumidade");
+
+
+                        db.insert_Cultura(Integer.parseInt(idCultura),
+                                p_email,
+                                p_nomeCultura,
+                                limiteInferiorTemperatura,
+                                limiteSuperiorTemperatura,
+                                limiteInferiorHumidade,
+                                limiteSuperiorHumidade
+                        );
+                    }
                 }
 
             }

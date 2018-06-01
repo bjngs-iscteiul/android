@@ -72,11 +72,18 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void insert_Cultura(int idCultura,String nomeCultura){
+    public void insert_Cultura(int idCultura, String email, String nomeCultura, Double limiteInferiorTemperatura, Double limiteSuperiorTemperatura, Double limiteInferiorHumidade, Double limiteSuperiorHumidade){
         ContentValues values = new ContentValues();
         values.put(DataBaseConfig.Cultura.COLUMN_NAME_IDCULTURA,idCultura);
+        values.put(DataBaseConfig.Cultura.COLUMN_NAME_EMAIL,email);
         values.put(DataBaseConfig.Cultura.COLUMN_NAME_NOMECULTURA,nomeCultura);
-        getWritableDatabase().insert(DataBaseConfig.Cultura.TABLE_NAME,null,values);
+        values.put(DataBaseConfig.Cultura.COLUMN_NAME_LIMITEINFERIORTEMPERATURA,limiteInferiorTemperatura);
+        values.put(DataBaseConfig.Cultura.COLUMN_NAME_LIMITESUPERIORTEMPERATURA,limiteSuperiorTemperatura);
+        values.put(DataBaseConfig.Cultura.COLUMN_NAME_LIMITEINFERIORHUMIDADE,limiteInferiorHumidade);
+        values.put(DataBaseConfig.Cultura.COLUMN_NAME_LIMITESUPERIORHUMIDADE,limiteSuperiorHumidade);
+        long insert = getWritableDatabase().insert(DataBaseConfig.Cultura.TABLE_NAME, null, values);
+
+
     }
 
 }

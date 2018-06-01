@@ -47,7 +47,10 @@ public class ConnectionHandler {
                 result.append(line);
             }
             conn.disconnect();
-            jObj = new JSONArray(result.toString());
+           try{ jObj = new JSONArray(result.toString());}
+           catch(Exception e){
+               Log.d("WebService","WebService give Invalid Information");
+           }
         } catch (Exception e) {
             e.printStackTrace();
         }
