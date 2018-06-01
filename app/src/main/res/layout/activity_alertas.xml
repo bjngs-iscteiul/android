@@ -27,10 +27,12 @@
 
     <ScrollView
         android:id="@+id/scroller"
-        android:layout_width="368dp"
+        android:layout_width="385dp"
         android:layout_height="418dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,46 +63,41 @@
                             android:id="@+id/nomeVariavel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="20dp"
+                            android:padding="16dp"
                             android:text="NomeVariavel"
-                            android:textStyle="bold"
-                            android:textSize="10sp"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/data"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="20dp"
+                            android:padding="16dp"
                             android:text="Data"
-                            android:textStyle="bold"
-                            android:textSize="10sp"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/hora"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="20dp"
+                            android:padding="16dp"
                             android:text="Hora"
-                            android:textStyle="bold"
-                            android:textSize="10sp"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/valor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="20dp"
+                            android:padding="16dp"
                             android:text="Valor"
-                            android:textStyle="bold"
-                            android:textSize="10sp"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/alerta"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="20dp"
+                            android:padding="16dp"
                             android:text="Alerta"
-                            android:textStyle="bold"
-                            android:textSize="10sp"/>
+                            android:textStyle="bold" />
 
                     </TableRow>
                 </TableLayout>
