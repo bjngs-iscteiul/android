@@ -141,13 +141,18 @@ String dayString;
         TextView endHour = findViewById(R.id.timeEnd);
         Cursor cursor = null;
 
-        if(initHour.getText().toString().length() > 0 && endHour.getText().toString().length() > 0 )
-            cursor = getCursor(" AND HoraMedicao > '" + initHour.getText().toString() + "' AND HoraMedicao < '" + endHour.getText().toString() +"'" );
-        else if(initHour.getText().toString().length() > 0 )
-           cursor =  getCursor(" AND HoraMedicao > '" + initHour.getText().toString()+"'");
-        clearGraph();
+        if(initHour.getText().toString().length() > 0 && endHour.getText().toString().length() > 0 ) {
+            cursor = getCursor(" AND HoraMedicao > '" + initHour.getText().toString() + "' AND HoraMedicao < '" + endHour.getText().toString() + "'");
+            clearGraph();
+            drawGraph(cursor);
+        }else if(initHour.getText().toString().length() > 0 ) {
+            cursor = getCursor(" AND HoraMedicao > '" + initHour.getText().toString() + "'");
+            clearGraph();
+            drawGraph(cursor);
+        }
 
-        drawGraph(cursor);
+
+
     }
 
     private void clearGraph(){
