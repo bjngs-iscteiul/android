@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -34,7 +35,8 @@ public class AlertasActivity extends AppCompatActivity {
     public Cursor getAlertasCursor(){
         //To do
         DataBaseReader dbReader = new DataBaseReader(db);
-        Cursor cursor = dbReader.readAlertas();
+        EditText idCultura = findViewById(R.id.idCultura);
+        Cursor cursor = dbReader.readAlertas(Integer.valueOf(String.valueOf(idCultura.getText())));
         return cursor;
     }
     private void updateNomeCultura(Cursor culturaCursor){
@@ -54,37 +56,44 @@ public class AlertasActivity extends AppCompatActivity {
         while (alertasCursor.moveToNext()){
             TableRow row = new TableRow(this);
             row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            TextView nomeVariavel = new TextView(this);
-            nomeVariavel.setText(alertasCursor.getString(alertasCursor.getColumnIndex("NomeVariavel")));
-            nomeVariavel.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
+            //TextView nomeVariavel = new TextView(this);
+            //nomeVariavel.setText(alertasCursor.getString(alertasCursor.getColumnIndex("NomeVariavel")));
+            //nomeVariavel.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
 
-            TextView data = new TextView(this);
-            data.setText(alertasCursor.getString(alertasCursor.getColumnIndex("DataMedicao")));
-            data.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
+            //TextView data = new TextView(this);
+            //data.setText(alertasCursor.getString(alertasCursor.getColumnIndex("DataMedicao")));
+            //data.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
 
-            TextView hora = new TextView(this);
-            String fullHora = alertasCursor.getString(alertasCursor.getColumnIndex("HoraMedicao"));
-            String[] splitter = fullHora.split(":");
-            String horaFormatted = splitter[0]+":"+splitter[1];
-            hora.setText(horaFormatted);
-            hora.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
+            //TextView hora = new TextView(this);
+            //String fullHora = alertasCursor.getString(alertasCursor.getColumnIndex("HoraMedicao"));
+            //String[] splitter = fullHora.split(":");
+            //String horaFormatted = splitter[0]+":"+splitter[1];
+            //hora.setText(horaFormatted);
+            //hora.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
 
+            //TextView
+            //TextView valor = new TextView(this);
+            //valor.setText(Double.toString(alertasCursor.getDouble(alertasCursor.getColumnIndex("ValorMedicao"))));
+            //valor.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
 
-            TextView valor = new TextView(this);
-            valor.setText(Double.toString(alertasCursor.getDouble(alertasCursor.getColumnIndex("ValorMedicao"))));
-            valor.setPadding(dpAsPixels(16),dpAsPixels(5),0,0);
+            TextView idalerta = new TextView(this);
+            idalerta.setText(Integer.toString(alertasCursor.getInt(alertasCursor.getColumnIndex("IDAlerta"))));
+            idalerta.setPadding(dpAsPixels(16),dpAsPixels(5),20,0);
 
             TextView alerta = new TextView(this);
-            alerta.setText(alertasCursor.getString(alertasCursor.getColumnIndex("Alertas")));
+            alerta.setText(alertasCursor.getString(alertasCursor.getColumnIndex("texto")));
             alerta.setPadding(dpAsPixels(16),dpAsPixels(5),20,0);
 
-            row.addView(nomeVariavel);
-            row.addView(data);
-            row.addView(hora);
-            row.addView(valor);
+            //row.addView(nomeVariavel);
+            //row.addView(data);
+            //row.addView(hora);
+            //row.addView(valor);
+            row.addView(idalerta);
             row.addView(alerta);
             table.addView(row, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
+
+
 
 
     }

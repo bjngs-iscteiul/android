@@ -4,12 +4,16 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TimeUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -102,6 +106,15 @@ String dayString;
         return cursor;
     }
 
+    public Cursor getCursor(String string){
+
+        //To do, ir à base de dados buscar o cursor do dia selecionado.
+
+        reader = new DataBaseReader(db);
+        Cursor cursor = reader.ReadHumidadeTemperatura("DataMedicao='"+yearString+"-"+monthString+"-"+dayString+"'" + string);
+
+        return cursor;
+    }
 
 //    public Cursor getCursor(String horaInit, String horaFin){
 //
@@ -123,7 +136,23 @@ String dayString;
         finish();
     }
 
-//Para o gráfico ser desenhado precisam de pelo menos dois valores num dia (é um grafico de linhas), ou seja o cursor entregue a esta função tem de ter registos em duas alturas diferentes no mesmo dia, se quiserem desenhar so com um valor têm de alterar o grafico para um grafico de pontos, este é o link da api que eu usei http://www.android-graphview.org//
+    public void switch1Click(View v){
+        TextView initHour = findViewById(R.id.timeInit);
+        TextView endHour = findViewById(R.id.timeEnd);
+        Cursor cursor = null;
+
+        if(initHour.getText().toString().length() > 0 && endHour.getText().toString().length() > 0 )
+            cursor = getCursor(" AND HoraMedicao > " + initHour.getText().toString() + " AND HoraMedicao < " + endHour.getText().toString() );
+        else if(initHour.getText().toString().length() > 0 )
+           cursor =  getCursor(" AND HoraMedicao > " + initHour.getText().toString());
+
+
+        drawGraph(cursor);
+    }
+
+
+
+    //Para o gráfico ser desenhado precisam de pelo menos dois valores num dia (é um grafico de linhas), ou seja o cursor entregue a esta função tem de ter registos em duas alturas diferentes no mesmo dia, se quiserem desenhar so com um valor têm de alterar o grafico para um grafico de pontos, este é o link da api que eu usei http://www.android-graphview.org//
     private void drawGraph(Cursor cursor){
         int helper = 0;
         double first_value=0.0;

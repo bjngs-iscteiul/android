@@ -43,14 +43,21 @@ public class DataBaseReader {
     }
 
 
-    public Cursor readAlertas(){
+    public Cursor readAlertas(int idcultura){
+        //Só vai buscar os alertas cuja cultura seja a escolhida e cujo campo migrado seja = 0.
+        //O Migrado serve para indicar se o alerta já foi apresentado ao Investigador ou não.
+        /*Questão: Aqui o readalertas vai ler os alertas no sybase ou no próprio sqlite?!
+         * Se é no sqlite devia mostrar todos, correto?!*/
+        String [] columns = {DataBaseConfig.Alertas.COLUMN_NAME_IDALERTA, DataBaseConfig.Alertas.COLUMN_NAME_TEXTO};
+        String whereClause = DataBaseConfig.Alertas.COLUMN_NAME_MIGRADO+"=? AND "+
+                DataBaseConfig.Alertas.COLUMN_NAME_IDCULTURA+"=?";
+        String [] whereArgs = {Integer.toString(0),Integer.toString(idcultura)};
 
-        //To do
         Cursor cursor = db.query(
                 DataBaseConfig.Alertas.TABLE_NAME,   // Nome da tabela
                 null,
-                null,
-                null,
+                whereClause,
+                whereArgs,
                 null,
                 null,
                 null

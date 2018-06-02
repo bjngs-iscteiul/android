@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
             writeToDB(idCultura.getText().toString());
             idCultura.onEditorAction(EditorInfo.IME_ACTION_DONE);
             updateNomeCultura();
-            //updateNumeroMedicoes();
-            //updateNumeroAlertas();
+            updateNumeroMedicoes();
+            updateNumeroAlertas();
         }
     }
 
@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
     public void updateNumeroAlertas(){
         //To Do
         DataBaseReader dbReader = new DataBaseReader(db);
-        Cursor cursor = dbReader.readAlertas();
+        EditText idCultura = findViewById(R.id.idCultura);
+        Cursor cursor = dbReader.readAlertas(Integer.valueOf(String.valueOf(idCultura.getText())));
         int totalAlertas = cursor.getCount();
         TextView text = findViewById(R.id.numeroAlertasInt);
         text.setText(Integer.toString(totalAlertas));
-
     }
 
     private void updateNomeCultura(){
@@ -137,14 +137,15 @@ public class MainActivity extends AppCompatActivity {
             if (jsonAlertas!=null){
                 for (int i = 0; i < jsonAlertas.length()-1; i++) {
                     JSONObject c = jsonAlertas.getJSONObject(i);
-                    //int IDAlerta = c.getInt("IDAlerta");
-                    int IDAlerta = i;
-                    String dataMedicao = c.getString("DataMedicao");
-                    double valorMedicao = c.getDouble("ValorMedicao");
-                    String horaMedicao = c.getString("HoraMedicao");
-                    String nomeVariavel = c.getString("NomeVariavel");
-                    String alerta = c.getString("Alerta");
-                    db.insert_Alertas(IDAlerta,dataMedicao,valorMedicao,horaMedicao,nomeVariavel,alerta);
+                    int IDAlerta = c.getInt("IDAlerta");
+                    int IDCultura = c.getInt("IDCultura");
+                    int migrado = c.getInt("migrado");
+                    //String dataMedicao = c.getString("DataMedicao");
+                    //double valorMedicao = c.getDouble("ValorMedicao");
+                    //String horaMedicao = c.getString("HoraMedicao");
+                    //String nomeVariavel = c.getString("NomeVariavel");
+                    String texto = c.getString("texto");
+                    db.insert_Alertas(IDAlerta,IDCultura,migrado,texto);
                 }
 
             }
