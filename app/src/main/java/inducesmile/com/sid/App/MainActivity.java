@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAlertas(View v){
         Intent i = new Intent(this,AlertasActivity.class);
+        EditText idCultura = findViewById(R.id.idCultura);
+        i.putExtra("idCultura",Integer.parseInt(idCultura.getText().toString()));
         startActivity(i);
     }
 
@@ -133,18 +135,18 @@ public class MainActivity extends AppCompatActivity {
             }
             }
 
-            JSONArray jsonAlertas = jParser.getJSONFromUrl(READ_ALERTAS,params);
+             JSONArray jsonAlertas = jParser.getJSONFromUrl(READ_ALERTAS,params);
             if (jsonAlertas!=null){
                 for (int i = 0; i < jsonAlertas.length()-1; i++) {
                     JSONObject c = jsonAlertas.getJSONObject(i);
                     int IDAlerta = c.getInt("IDAlerta");
                     int IDCultura = c.getInt("IDCultura");
-                    int migrado = c.getInt("migrado");
+                    int migrado = c.getInt("Migrado");
                     //String dataMedicao = c.getString("DataMedicao");
                     //double valorMedicao = c.getDouble("ValorMedicao");
                     //String horaMedicao = c.getString("HoraMedicao");
                     //String nomeVariavel = c.getString("NomeVariavel");
-                    String texto = c.getString("texto");
+                    String texto = c.getString("Texto");
                     db.insert_Alertas(IDAlerta,IDCultura,migrado,texto);
                 }
 

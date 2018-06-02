@@ -37,14 +37,16 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.493">
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="127dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -60,53 +62,18 @@
                         android:id="@+id/headerRow"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/nomeVariavel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="16dp"
-                            android:text="NomeVariavel"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/data"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="16dp"
-                            android:text="Data"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/hora"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="16dp"
-                            android:text="Hora"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/valor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="16dp"
-                            android:text="Valor"
-                            android:textStyle="bold" />
-
                         <TextView
                             android:id="@+id/alerta"
-                            android:layout_width="wrap_content"
+                            android:layout_width="322dp"
                             android:layout_height="wrap_content"
                             android:padding="16dp"
                             android:text="Alerta"
+                            android:gravity="center"
                             android:textStyle="bold" />
-
                     </TableRow>
                 </TableLayout>
-
             </LinearLayout>
         </HorizontalScrollView>
-
     </ScrollView>
 
     <Button
