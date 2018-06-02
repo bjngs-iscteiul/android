@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             params.put("idCultura",idCultura);
             ConnectionHandler jParser = new ConnectionHandler();
             db.dbClear();
-            /*JSONArray jsonHumidadeTemperatura = jParser.getJSONFromUrl(READ_HUMIDADE_TEMPERATURA, params);
+            JSONArray jsonHumidadeTemperatura = jParser.getJSONFromUrl(READ_HUMIDADE_TEMPERATURA, params);
             if (jsonHumidadeTemperatura !=null){
             for (int i = 0; i < jsonHumidadeTemperatura.length()-1; i++) {
                 JSONObject c = jsonHumidadeTemperatura.getJSONObject(i);
@@ -137,17 +137,17 @@ public class MainActivity extends AppCompatActivity {
             if (jsonAlertas!=null){
                 for (int i = 0; i < jsonAlertas.length()-1; i++) {
                     JSONObject c = jsonAlertas.getJSONObject(i);
-//                    //int IDAlerta = c.getInt("IDAlerta");
-//                    int IDAlerta = i;
-//                    String dataMedicao = c.getString("DataMedicao");
-//                    double valorMedicao = c.getDouble("ValorMedicao");
-//                    String horaMedicao = c.getString("HoraMedicao");
-//                    String nomeVariavel = c.getString("NomeVariavel");
-//                    String alerta = c.getString("Alerta");
-//                    db.insert_Alertas(IDAlerta,dataMedicao,valorMedicao,horaMedicao,nomeVariavel,alerta);
+                    //int IDAlerta = c.getInt("IDAlerta");
+                    int IDAlerta = i;
+                    String dataMedicao = c.getString("DataMedicao");
+                    double valorMedicao = c.getDouble("ValorMedicao");
+                    String horaMedicao = c.getString("HoraMedicao");
+                    String nomeVariavel = c.getString("NomeVariavel");
+                    String alerta = c.getString("Alerta");
+                    db.insert_Alertas(IDAlerta,dataMedicao,valorMedicao,horaMedicao,nomeVariavel,alerta);
                 }
 
-            }*/
+            }
 
             JSONArray jsonCultura = jParser.getJSONFromUrl(READ_Cultura,params);
             if (jsonCultura!=null){
