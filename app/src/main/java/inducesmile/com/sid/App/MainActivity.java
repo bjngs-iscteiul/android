@@ -59,9 +59,8 @@ public class MainActivity extends AppCompatActivity {
             writeToDB(idCultura.getText().toString());
             idCultura.onEditorAction(EditorInfo.IME_ACTION_DONE);
             updateNomeCultura();
-            updateNumeroMedicoes();
-            updateNumeroAlertas();
-
+            //updateNumeroMedicoes();
+            //updateNumeroAlertas();
         }
     }
 
@@ -91,17 +90,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateNomeCultura(){
-
-        //To do?
         DataBaseReader dbReader = new DataBaseReader(db);
-
         TextView nomeCultura_tv= findViewById(R.id.nomeCultura_tv);
         Cursor cursor = dbReader.readCultura();
         String nomeCultura = null;
         while (cursor.moveToNext()){
             nomeCultura = cursor.getString(cursor.getColumnIndex("NomeCultura"));
         }
-
         if (nomeCultura!=null){
             nomeCultura_tv.setText(nomeCultura);
             nomeCultura_tv.setTextColor(Color.BLACK);
@@ -110,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
             nomeCultura_tv.setText("Cultura Invalida!");
             nomeCultura_tv.setTextColor(Color.RED);
         }
-
         nomeCultura_tv.setVisibility(View.VISIBLE);
     }
 
@@ -125,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
             params.put("password", password);
             params.put("idCultura",idCultura);
             ConnectionHandler jParser = new ConnectionHandler();
-            JSONArray jsonHumidadeTemperatura = jParser.getJSONFromUrl(READ_HUMIDADE_TEMPERATURA, params);
             db.dbClear();
+            /*JSONArray jsonHumidadeTemperatura = jParser.getJSONFromUrl(READ_HUMIDADE_TEMPERATURA, params);
             if (jsonHumidadeTemperatura !=null){
             for (int i = 0; i < jsonHumidadeTemperatura.length()-1; i++) {
                 JSONObject c = jsonHumidadeTemperatura.getJSONObject(i);
@@ -153,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     db.insert_Alertas(IDAlerta,dataMedicao,valorMedicao,horaMedicao,nomeVariavel,alerta);
                 }
 
-            }
+            }*/
 
             JSONArray jsonCultura = jParser.getJSONFromUrl(READ_Cultura,params);
             if (jsonCultura!=null){
@@ -181,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
                         );
                     }
                 }
-
             }
 
         } catch (JSONException e) {
