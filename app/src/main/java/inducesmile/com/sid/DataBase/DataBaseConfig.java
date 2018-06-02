@@ -27,6 +27,8 @@ public class DataBaseConfig {
         public static final String COLUMN_NAME_HORAMEDICAO="HoraMedicao";
         public static final String COLUMN_NAME_NOMEVARIAVEL="NomeVariavel";
         public static final String COLUMN_NAME_ALERTAS="Alertas";
+        public static final String COLUMN_NAME_TEXTO="texto";
+        public static final String COLUMN_NAME_MIGRADO="migrado";
     }
 
     public static class Cultura implements BaseColumns{
