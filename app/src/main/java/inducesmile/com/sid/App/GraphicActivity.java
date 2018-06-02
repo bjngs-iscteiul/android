@@ -59,6 +59,15 @@ String dayString;
         drawGraph(cursor);
     }
 
+    @Override
+    protected void onPostResume() {
+        drawGraph();
+    }
+
+    private void drawGraph() {
+
+    }
+
 
     private void dateToString(){
         yearString = Integer.toString(year);
@@ -173,6 +182,7 @@ String dayString;
         double horaForGraph = Double.parseDouble(horaString);
         return horaForGraph;
     }
+
 
     private String convertDoubleToHourString(double value){
         String horaString = Double.toString(value);

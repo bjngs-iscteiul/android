@@ -135,8 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 double valorMedicaoTemperatura = c.getDouble("ValorMedicaoTemperatura");
                 double valorMedicaoHumidade = c.getDouble("ValorMedicaoHumidade");
                 String dataMedicao = c.getString("DataMedicao");
-                int idCultura2 = c.getInt("IDCultura");
-                db.insert_Humidade_Temperatura(idMedicao,idCultura2,horaMedicao,valorMedicaoTemperatura,valorMedicaoHumidade,dataMedicao);
+                //int idCultura2 = c.getInt("IDCultura");
+                //db.insert_Humidade_Temperatura(idMedicao,idCultura2,horaMedicao,valorMedicaoTemperatura,valorMedicaoHumidade,dataMedicao);
+                db.insert_Humidade_Temperatura(idMedicao,horaMedicao,valorMedicaoTemperatura,valorMedicaoHumidade,dataMedicao);
             }
             }
 
@@ -159,16 +160,16 @@ public class MainActivity extends AppCompatActivity {
             if (jsonCultura!=null){
                 for (int i = 0; i < jsonCultura.length()-1; i++) {
                     JSONObject c = jsonCultura.getJSONObject(i);
-                    Integer p_idCultura = c.getInt("idCultura");
+                    Integer p_idCultura = c.getInt("IDCultura");
 
                     if (Integer.parseInt(idCultura )== p_idCultura) {
 
-                        String p_email = c.getString("email");
-                        String p_nomeCultura = c.getString("nomeCultura");
-                        Double limiteInferiorTemperatura = c.getDouble("limiteInferiorTemperatura");
-                        Double limiteSuperiorTemperatura = c.getDouble("limiteSuperiorTemperatura");
-                        Double limiteInferiorHumidade = c.getDouble("limiteInferiorHumidade");
-                        Double limiteSuperiorHumidade = c.getDouble("limiteSuperiorHumidade");
+                        String p_email = c.getString("Email");
+                        String p_nomeCultura = c.getString("NomeCultura");
+                        Double limiteInferiorTemperatura = c.getDouble("LimiteInferiorTemperatura");
+                        Double limiteSuperiorTemperatura = c.getDouble("LimiteSuperiorTemperatura");
+                        Double limiteInferiorHumidade = c.getDouble("LimiteInferiorHumidade");
+                        Double limiteSuperiorHumidade = c.getDouble("LimiteSuperiorHumidade");
 
 
                         db.insert_Cultura(Integer.parseInt(idCultura),
