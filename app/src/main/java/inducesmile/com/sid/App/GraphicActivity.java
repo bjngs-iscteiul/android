@@ -142,15 +142,17 @@ String dayString;
         Cursor cursor = null;
 
         if(initHour.getText().toString().length() > 0 && endHour.getText().toString().length() > 0 )
-            cursor = getCursor(" AND HoraMedicao > " + initHour.getText().toString() + " AND HoraMedicao < " + endHour.getText().toString() );
+            cursor = getCursor(" AND HoraMedicao > '" + initHour.getText().toString() + "' AND HoraMedicao < '" + endHour.getText().toString() +"'" );
         else if(initHour.getText().toString().length() > 0 )
-           cursor =  getCursor(" AND HoraMedicao > " + initHour.getText().toString());
-
+           cursor =  getCursor(" AND HoraMedicao > '" + initHour.getText().toString()+"'");
+        clearGraph();
 
         drawGraph(cursor);
     }
 
-
+    private void clearGraph(){
+        graph.removeAllSeries();
+    }
 
     //Para o gráfico ser desenhado precisam de pelo menos dois valores num dia (é um grafico de linhas), ou seja o cursor entregue a esta função tem de ter registos em duas alturas diferentes no mesmo dia, se quiserem desenhar so com um valor têm de alterar o grafico para um grafico de pontos, este é o link da api que eu usei http://www.android-graphview.org//
     private void drawGraph(Cursor cursor){

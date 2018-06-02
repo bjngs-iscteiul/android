@@ -4,7 +4,7 @@
     <string name="filtrar">Filtrar</string>
     <string name="escolher_data">Escolher data</string>
     <string name="alterar_para_a_data">Alterar para a data</string>
-    <string name="limite_inferior">Limite Inferior</string>
-    <string name="limite_superior">Limite Superior</string>
-    <string name="Filtrar" />
+    <string name="limite_inferior">Hora Inicio</string>
+    <string name="limite_superior">Hora Fim</string>
+    <string name="Filtrar">Filtrar</string>
 </resources>
