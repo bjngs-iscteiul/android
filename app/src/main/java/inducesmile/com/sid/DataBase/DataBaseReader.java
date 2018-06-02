@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import inducesmile.com.sid.DataBase.DataBaseConfig;
-import inducesmile.com.sid.DataBase.DataBaseHandler;
+
 
 /**
  * Created by joao on 11/04/2018.
@@ -33,7 +33,7 @@ public class DataBaseReader {
         Cursor cursor = db.query(
                 DataBaseConfig.HumidadeTemperatura.TABLE_NAME,   // Nome da tabela
                 null,
-                        data,
+                null,
                 null,
                 null,
                 null,
