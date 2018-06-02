@@ -33,7 +33,7 @@ public class DataBaseReader {
         Cursor cursor = db.query(
                 DataBaseConfig.HumidadeTemperatura.TABLE_NAME,   // Nome da tabela
                 null,
-                null,
+                data,
                 null,
                 null,
                 null,
@@ -41,6 +41,7 @@ public class DataBaseReader {
         );
         return cursor;
     }
+
 
     public Cursor readAlertas(){
 

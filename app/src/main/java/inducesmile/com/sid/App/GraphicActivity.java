@@ -53,6 +53,8 @@ String dayString;
             month = Calendar.getInstance().get(Calendar.MONTH)+1;
             day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         }
+        View hour = findViewById(R.id.timePicker1);
+
         dateToString();
         transformDateString();
         Cursor cursor = getCursor();
@@ -61,6 +63,7 @@ String dayString;
 
     @Override
     protected void onPostResume() {
+        super.onPostResume();
         drawGraph();
     }
 
@@ -95,8 +98,22 @@ String dayString;
 
         reader = new DataBaseReader(db);
         Cursor cursor = reader.ReadHumidadeTemperatura("DataMedicao='"+yearString+"-"+monthString+"-"+dayString+"'");
+
         return cursor;
     }
+
+
+//    public Cursor getCursor(String horaInit, String horaFin){
+//
+//        //To do, ir à base de dados buscar o cursor do dia selecionado.
+//
+//        reader = new DataBaseReader(db);
+//       // Cursor cursor = reader.ReadHumidadeTemperatura_Data("DataMedicao='"+yearString+"-"+monthString+"-"+dayString+"'");
+//
+//        return cursor;
+//    }
+
+
 
 
 //A parte do dia selecionado no calendario ser guardado nas variáveis necessárias nesta classe já está feito, não precisam de mexer em nada referente ao calendário a não ser que queiram melhorar o que eu fiz.
