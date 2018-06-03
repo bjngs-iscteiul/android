@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String username= UserLogin.getInstance().getUsername();
     private static final String password = UserLogin.getInstance().getPassword();
     DataBaseHandler db = new DataBaseHandler(this);
-    public static final String READ_HUMIDADE_TEMPERATURA = "http://" + IP + ":" + PORT + "/getHumidade_Temperatura.php";
-    public static final String READ_ALERTAS = "http://" + IP + ":" + PORT + "/getAlertas.php";
-    public static final String READ_Cultura = "http://" + IP + ":" + PORT + "/getCultura.php";
+    public static final String READ_HUMIDADE_TEMPERATURA = "http://" + IP + ":" + PORT + "/getHumidade_Temperatura.php?username=" + username + "&password="+password;
+    public static final String READ_ALERTAS = "http://" + IP + ":" + PORT + "/getAlertas.php?username=" + username + "&password="+password;
+    public static final String READ_Cultura = "http://" + IP + ":" + PORT + "/getCultura.php?username=" + username + "&password="+password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void refreshDB(View v){
         EditText idCultura = findViewById(R.id.idCultura);
-        if (idCultura.getText() != null){
+        if (idCultura.getText().toString().length() > 0){
             writeToDB(idCultura.getText().toString());
             idCultura.onEditorAction(EditorInfo.IME_ACTION_DONE);
             updateNomeCultura();
