@@ -1,10 +1,13 @@
 package inducesmile.com.sid.App;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import inducesmile.com.sid.DataBase.DataBaseHandler;
 import inducesmile.com.sid.DataBase.DataBaseReader;
 import inducesmile.com.sid.R;
+import android.app.AlertDialog.Builder;
 
 public class AlertasActivity extends AppCompatActivity {
 
@@ -56,40 +60,28 @@ public class AlertasActivity extends AppCompatActivity {
         tv.setText(nome);}
     }
 
-    private void listAlertas(Cursor alertasCursor){
-
+    private void listAlertas(final Cursor alertasCursor){
         TableLayout table = findViewById(R.id.tableAlertas);
         while (alertasCursor.moveToNext()){
             TableRow row = new TableRow(this);
-
             row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-            TextView alerta = new TextView(this);
+            final TextView alerta = new TextView(this);
             alerta.setText(alertasCursor.getString(alertasCursor.getColumnIndex("texto")));
             alerta.setPadding(dpAsPixels(16),dpAsPixels(5),20,0);
-
+            alerta.setWidth(dpAsPixels(384));
             row.addView(alerta);
-
             row.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    v.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+                    AlertDialog.Builder  alertDialog = new AlertDialog.Builder(AlertasActivity.this);
+                    alertDialog.setMessage(alerta.getText());
+                    alertDialog.show();
                 }
             });
-
-
-
-
             table.addView(row, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
-
-
-
-
-
-
     }
 
 

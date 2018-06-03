@@ -18,6 +18,7 @@
         android:layout_marginTop="8dp"
         android:text="Selecione uma cultura"
         android:textStyle="bold"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -42,12 +43,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.493">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="9dp">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -69,14 +64,15 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="16dp"
-                            android:text="Alerta"
+                            android:text="Alertas"
                             android:textStyle="bold"
+                            android:textSize="20dp"
                             tools:layout_editor_absoluteX="190dp"
                             tools:layout_editor_absoluteY="46dp" />
+
                     </TableRow>
                 </TableLayout>
             </LinearLayout>
-        </HorizontalScrollView>
     </ScrollView>
 
     <Button
