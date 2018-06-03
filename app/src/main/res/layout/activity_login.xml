@@ -123,4 +123,15 @@
         app:layout_constraintTop_toBottomOf="@+id/port"
         app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/loginFail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_errado"
+        android:textColorLink="@android:color/holo_red_dark"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="436dp" />
+
 </android.support.constraint.ConstraintLayout>

@@ -7,4 +7,5 @@
     <string name="limite_inferior">Hora Inicio</string>
     <string name="limite_superior">Hora Fim</string>
     <string name="Filtrar">Filtrar</string>
+    <string name="login_errado">Login Errado!</string>
 </resources>
