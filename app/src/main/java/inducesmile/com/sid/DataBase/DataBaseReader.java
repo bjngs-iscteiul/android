@@ -79,6 +79,11 @@ public class DataBaseReader {
         return cursor;
     }
 
+    public void update_Alerta_Migrado(int idAlerta){
+       /* String s = "UPDATE Alertas SET migrado = 1 WHERE IDAlerta="+idAlerta;
+        db.execSQL(s);*/
+    }
+
 
 
 }

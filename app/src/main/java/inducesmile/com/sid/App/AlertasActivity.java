@@ -63,25 +63,26 @@ public class AlertasActivity extends AppCompatActivity {
     private void listAlertas(final Cursor alertasCursor){
         TableLayout table = findViewById(R.id.tableAlertas);
         while (alertasCursor.moveToNext()){
-            TableRow row = new TableRow(this);
-            row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-            final TextView alerta = new TextView(this);
-            alerta.setText(alertasCursor.getString(alertasCursor.getColumnIndex("texto")));
-            alerta.setPadding(dpAsPixels(16),dpAsPixels(5),20,0);
-            alerta.setWidth(dpAsPixels(384));
-            row.addView(alerta);
-            row.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
-                {
-                    AlertDialog.Builder  alertDialog = new AlertDialog.Builder(AlertasActivity.this);
-                    alertDialog.setMessage(alerta.getText());
-                    alertDialog.show();
-                }
-            });
-            table.addView(row, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-        }
+                TableRow row = new TableRow(this);
+                row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                final TextView alerta = new TextView(this);
+                alerta.setText(alertasCursor.getString(alertasCursor.getColumnIndex("texto")));
+                alerta.setPadding(dpAsPixels(16), dpAsPixels(5), 20, 0);
+                alerta.setWidth(dpAsPixels(384));
+                row.addView(alerta);
+                row.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertasActivity.this);
+                        alertDialog.setMessage(alerta.getText());
+                        alertDialog.show();
+                        v.setBackgroundColor(getResources().getColor(android.R.color.background_light));
+                       /* DataBaseReader dbReader = new DataBaseReader(db);
+                        dbReader.update_Alerta_Migrado(alertasCursor.getColumnIndex("IDAlerta"));*/
+                    }
+                });
+                table.addView(row, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+            }
     }
 
 
@@ -93,7 +94,10 @@ private int dpAsPixels(int dp){
 }
 
     public void refreshAlerts(View v){
-
+       /* Intent intent = getIntent();
+        int idCultura = intent.getIntExtra("idCultura",0);
+        Cursor alertasCursor= getAlertasCursor(idCultura+"");
+        listAlertas(alertasCursor);*/
     }
 
 

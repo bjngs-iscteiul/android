@@ -85,8 +85,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         values.put(DataBaseConfig.Cultura.COLUMN_NAME_LIMITEINFERIORHUMIDADE,limiteInferiorHumidade);
         values.put(DataBaseConfig.Cultura.COLUMN_NAME_LIMITESUPERIORHUMIDADE,limiteSuperiorHumidade);
         long insert = getWritableDatabase().insert(DataBaseConfig.Cultura.TABLE_NAME, null, values);
-
-
     }
+
+
 
 }
