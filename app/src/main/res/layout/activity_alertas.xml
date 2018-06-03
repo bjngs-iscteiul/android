@@ -45,11 +45,11 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="127dp">
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="9dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -62,14 +62,17 @@
                         android:id="@+id/headerRow"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <TextView
                             android:id="@+id/alerta"
-                            android:layout_width="322dp"
+                            android:layout_width="384dp"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:padding="16dp"
                             android:text="Alerta"
-                            android:gravity="center"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:layout_editor_absoluteX="190dp"
+                            tools:layout_editor_absoluteY="46dp" />
                     </TableRow>
                 </TableLayout>
             </LinearLayout>
