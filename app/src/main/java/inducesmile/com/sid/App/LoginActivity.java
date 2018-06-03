@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @SuppressLint("WrongConstant")
     public void loginClick(View v){
+        username=findViewById(R.id.username);
+        password = findViewById(R.id.password);
         READ_HUMIDADE_TEMPERATURA = "http://" + ip.getText().toString() + ":" + port.getText().toString() + "/getHumidade_Temperatura.php?username=" + username.getText().toString() + "&password="+password.getText().toString();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
