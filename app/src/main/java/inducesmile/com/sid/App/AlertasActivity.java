@@ -100,16 +100,32 @@ private int dpAsPixels(int dp){
 }
 
     public void refreshAlerts(View v){
-        TableLayout table = findViewById(R.id.tableAlertas);
-        int count = table.getChildCount();
-        for (int i = 1; i < count; i++) {
-            View child = table.getChildAt(i);
-            if (child instanceof TableRow) ((ViewGroup) child).removeAllViews();
-        }
-        Intent intent = getIntent();
-        int idCultura = intent.getIntExtra("idCultura",0);
-        Cursor alertasCursor= getAlertasCursor(idCultura+"");
-        listAlertas(alertasCursor);
+
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Apagar");
+        builder.setMessage("Pretende eliminar os alertas selecionados?");
+
+        // add the buttons
+        builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                TableLayout table = findViewById(R.id.tableAlertas);
+                int count = table.getChildCount();
+                for (int i = 1; i < count; i++) {
+                    View child = table.getChildAt(i);
+                    if (child instanceof TableRow) ((ViewGroup) child).removeAllViews();
+                }
+                Intent intent = getIntent();
+                int idCultura = intent.getIntExtra("idCultura",0);
+                Cursor alertasCursor= getAlertasCursor(idCultura+"");
+                listAlertas(alertasCursor);
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 

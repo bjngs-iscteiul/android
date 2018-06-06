@@ -53,7 +53,7 @@ public class DataBaseReader {
         /*Questão: Aqui o readalertas vai ler os alertas no sybase ou no próprio sqlite?!
          * Se é no sqlite devia mostrar todos, correto?!*/
         String [] columns = {DataBaseConfig.Alertas.COLUMN_NAME_IDALERTA, DataBaseConfig.Alertas.COLUMN_NAME_TEXTO};
-        String whereClause = DataBaseConfig.Alertas.COLUMN_NAME_MIGRADO+"=? AND "+
+        String whereClause = DataBaseConfig.Alertas.COLUMN_NAME_VISTO+"=? AND "+
                 DataBaseConfig.Alertas.COLUMN_NAME_IDCULTURA+"=?";
         String [] whereArgs = {Integer.toString(0),Integer.toString(idcultura)};
 
@@ -88,18 +88,18 @@ public class DataBaseReader {
         //ANTES DE UPDATE
         Cursor cursor = readAlertas(idAlerta);
         while (cursor.moveToNext()){
-            Log.d("ANTES", cursor.getString(cursor.getColumnIndex("migrado")));
+            Log.d("ANTES", cursor.getString(cursor.getColumnIndex("visto")));
         }
 
         final ContentValues values = new ContentValues();
-        values.put(DataBaseConfig.Alertas.COLUMN_NAME_MIGRADO, 1);
+        values.put(DataBaseConfig.Alertas.COLUMN_NAME_VISTO, 1);
         String whereClause = DataBaseConfig.Alertas.COLUMN_NAME_IDALERTA+"=?";
         String [] whereArgs = {Integer.toString(idAlerta)};
         db.update(
                 DataBaseConfig.Alertas.TABLE_NAME,
                 values,
-                DataBaseConfig.Alertas.COLUMN_NAME_IDALERTA+"="+idAlerta,
-                null);
+                whereClause,
+                whereArgs);
 
         /*db.delete(DataBaseConfig.Alertas.TABLE_NAME,
                     whereClause,
@@ -108,7 +108,7 @@ public class DataBaseReader {
        //DEPOIS DO UPDATE
        cursor = readAlertas(idAlerta);
         while (cursor.moveToNext()){
-            Log.d("DEPOIS", cursor.getString(cursor.getColumnIndex("migrado")));
+            Log.d("DEPOIS", cursor.getString(cursor.getColumnIndex("visto")));
         }
     }
 

@@ -142,12 +142,9 @@ public class MainActivity extends AppCompatActivity {
                     int IDAlerta = c.getInt("IDAlerta");
                     int IDCultura = c.getInt("IDCultura");
                     int migrado = c.getInt("Migrado");
-                    //String dataMedicao = c.getString("DataMedicao");
-                    //double valorMedicao = c.getDouble("ValorMedicao");
-                    //String horaMedicao = c.getString("HoraMedicao");
-                    //String nomeVariavel = c.getString("NomeVariavel");
+                    int visto = 0;
                     String texto = c.getString("Texto");
-                    db.insert_Alertas(IDAlerta,IDCultura,migrado,texto);
+                    db.insert_Alertas(IDAlerta,IDCultura,migrado,texto, visto);
                 }
 
             }
