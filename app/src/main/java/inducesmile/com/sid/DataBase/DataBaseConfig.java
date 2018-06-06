@@ -22,14 +22,10 @@ public class DataBaseConfig {
     public static class Alertas implements BaseColumns{
         public static final String TABLE_NAME="Alertas";
         public static final String COLUMN_NAME_IDALERTA="IDAlerta";
-        //    public static final String COLUMN_NAME_DATAMEDICAO="DataMedicao";
-        //    public static final String COLUMN_NAME_VALORMEDICAO="ValorMedicao";
-        //    public static final String COLUMN_NAME_HORAMEDICAO="HoraMedicao";
-        //    public static final String COLUMN_NAME_NOMEVARIAVEL="NomeVariavel";
-        //    public static final String COLUMN_NAME_ALERTAS="Alertas";
         public static final String COLUMN_NAME_TEXTO="texto";
         public static final String COLUMN_NAME_MIGRADO="migrado";
         public static final String COLUMN_NAME_IDCULTURA="IDCultura";
+        public static final String COLUMN_NAME_VISTO="visto";
     }
 
     public static class Cultura implements BaseColumns{
@@ -59,13 +55,8 @@ public class DataBaseConfig {
                     " (" + Alertas.COLUMN_NAME_IDALERTA + " INTEGER PRIMARY KEY," +
                     Alertas.COLUMN_NAME_IDCULTURA+ " INTEGER, " +
                     Alertas.COLUMN_NAME_MIGRADO+ " INTEGER, " +
-                    Alertas.COLUMN_NAME_TEXTO + " TEXT)";
-    //        Alertas.COLUMN_NAME_DATAMEDICAO + " TIME," +
-    //        Alertas.COLUMN_NAME_VALORMEDICAO + " INTEGER," +
-    //        Alertas.COLUMN_NAME_HORAMEDICAO + " TIME," +
-    //        Alertas.COLUMN_NAME_NOMEVARIAVEL + " TEXT, "+
-    //        Alertas.COLUMN_NAME_ALERTAS + " TEXT )";
-
+                    Alertas.COLUMN_NAME_TEXTO + " TEXT, " +
+                    Alertas.COLUMN_NAME_VISTO + " INTEGER)";
 
     protected static final String SQL_CREATE_CULTURA=
             "CREATE TABLE " + Cultura.TABLE_NAME +

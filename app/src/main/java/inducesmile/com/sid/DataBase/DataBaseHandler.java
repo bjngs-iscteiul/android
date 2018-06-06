@@ -59,17 +59,13 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         getWritableDatabase().insert(DataBaseConfig.HumidadeTemperatura.TABLE_NAME,null,values);
     }
 
-    public void insert_Alertas(int idAlerta,int idCultura,int migrado,String texto){
+    public void insert_Alertas(int idAlerta,int idCultura,int migrado,String texto, int visto){
         ContentValues values = new ContentValues();
         values.put(DataBaseConfig.Alertas.COLUMN_NAME_IDALERTA,idAlerta);
         values.put(DataBaseConfig.Alertas.COLUMN_NAME_IDCULTURA,idCultura);
         values.put(DataBaseConfig.Alertas.COLUMN_NAME_MIGRADO,migrado);
         values.put(DataBaseConfig.Alertas.COLUMN_NAME_TEXTO,texto);
-        //values.put(DataBaseConfig.Alertas.COLUMN_NAME_DATAMEDICAO,dataMedicao);
-        //values.put(DataBaseConfig.Alertas.COLUMN_NAME_VALORMEDICAO,valorMedicao);
-        //values.put(DataBaseConfig.Alertas.COLUMN_NAME_HORAMEDICAO,horaMedicao);
-        //values.put(DataBaseConfig.Alertas.COLUMN_NAME_NOMEVARIAVEL,nomeVariavel);
-        //values.put(DataBaseConfig.Alertas.COLUMN_NAME_ALERTAS,alerta);
+        values.put(DataBaseConfig.Alertas.COLUMN_NAME_VISTO,visto);
         getWritableDatabase().insert(DataBaseConfig.Alertas.TABLE_NAME,null,values);
 
 
