@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TableLayout;
@@ -78,6 +80,11 @@ public class AlertasActivity extends AppCompatActivity {
                     AlertDialog.Builder  alertDialog = new AlertDialog.Builder(AlertasActivity.this);
                     alertDialog.setMessage(alerta.getText());
                     alertDialog.show();
+                    v.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+                    DataBaseReader dbReader = new DataBaseReader(db);
+                    Intent intent = getIntent();
+                    int idCultura = intent.getIntExtra("idCultura",0);
+                    dbReader.update_Alerta_Migrado(idCultura);
                 }
             });
             table.addView(row, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
@@ -93,7 +100,16 @@ private int dpAsPixels(int dp){
 }
 
     public void refreshAlerts(View v){
-
+        TableLayout table = findViewById(R.id.tableAlertas);
+        int count = table.getChildCount();
+        for (int i = 1; i < count; i++) {
+            View child = table.getChildAt(i);
+            if (child instanceof TableRow) ((ViewGroup) child).removeAllViews();
+        }
+        Intent intent = getIntent();
+        int idCultura = intent.getIntExtra("idCultura",0);
+        Cursor alertasCursor= getAlertasCursor(idCultura+"");
+        listAlertas(alertasCursor);
     }
 
 

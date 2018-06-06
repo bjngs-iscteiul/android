@@ -1,8 +1,12 @@
 package inducesmile.com.sid.DataBase;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import inducesmile.com.sid.DataBase.DataBaseConfig;
 
@@ -78,6 +82,36 @@ public class DataBaseReader {
         );
         return cursor;
     }
+
+    public void update_Alerta_Migrado(int idAlerta){
+
+        //ANTES DE UPDATE
+        Cursor cursor = readAlertas(idAlerta);
+        while (cursor.moveToNext()){
+            Log.d("ANTES", cursor.getString(cursor.getColumnIndex("migrado")));
+        }
+
+        final ContentValues values = new ContentValues();
+        values.put(DataBaseConfig.Alertas.COLUMN_NAME_MIGRADO, 1);
+        String whereClause = DataBaseConfig.Alertas.COLUMN_NAME_IDALERTA+"=?";
+        String [] whereArgs = {Integer.toString(idAlerta)};
+        db.update(
+                DataBaseConfig.Alertas.TABLE_NAME,
+                values,
+                DataBaseConfig.Alertas.COLUMN_NAME_IDALERTA+"="+idAlerta,
+                null);
+
+        /*db.delete(DataBaseConfig.Alertas.TABLE_NAME,
+                    whereClause,
+                    whereArgs);
+         */
+       //DEPOIS DO UPDATE
+       cursor = readAlertas(idAlerta);
+        while (cursor.moveToNext()){
+            Log.d("DEPOIS", cursor.getString(cursor.getColumnIndex("migrado")));
+        }
+    }
+
 
 
 
